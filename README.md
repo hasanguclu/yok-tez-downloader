@@ -1,5 +1,3 @@
-# hsnlib
-A private library of Hasan Guclu
 # YÖK Tez Downloader
 
 Small, dependency-free command-line tool for saving a **publicly available**
@@ -22,23 +20,11 @@ No third-party packages are required.
 
 ## How it works
 
-1. Search for the record at [YÖK National Thesis Center](https://tez.yok.gov.tr/).
-2. Check that the record has a public full-text/PDF download option.
-3. Copy the PDF download link from the browser. The link must point to
-   `tez.yok.gov.tr`; the script deliberately rejects other hosts.
-4. Run the command below. The response is streamed to disk, checked for a PDF
-   content type or PDF signature, then atomically moved into the output folder.
-
 ```bash
-python3 yok_tez_downloader.py \
-  --url 'https://tez.yok.gov.tr/.../public-download-link' \
-  --output-dir theses
+python yok_tez_downloader.py
+
 ```
 
-The downloader follows a small number of redirects, but every redirect must
-remain on `tez.yok.gov.tr`. It uses a filename from `Content-Disposition` when
-the server supplies one, otherwise it uses `yok-thesis.pdf`. It also prints a
-SHA-256 checksum so the saved file can be identified later.
 
 ### Useful options
 
